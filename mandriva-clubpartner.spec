@@ -10,7 +10,6 @@ Source0: %{name}-%{version}.tar.bz2
 License: GPL
 Group: System/Servers
 Url: http://club.mandriva.com
-BuildRoot: %{_tmppath}/%{name}-buildroot
 BuildArch: noarch
 Requires: apache-mod_authnz_external
 
