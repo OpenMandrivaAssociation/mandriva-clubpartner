@@ -1,5 +1,5 @@
 %define name mandriva-clubpartner
-%define version 0.02
+%define version 0.03
 %define release %mkrel 1
 
 Summary: Mandriva Club authentication system
