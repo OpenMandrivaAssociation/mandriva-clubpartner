@@ -1,5 +1,5 @@
 %define name mandriva-clubpartner
-%define version 0.03
+%define version 0.04
 %define release %mkrel 1
 
 Summary: Mandriva Club authentication system
@@ -43,7 +43,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc README
 %_bindir/*
 %dir %attr(0755, apache, apache) /var/cache/clubauth
-%_webconfdir/webapps.d/*.conf
+%config %_webconfdir/webapps.d/*.conf
 
 %post
 %_post_webapp
