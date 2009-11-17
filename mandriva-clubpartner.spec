@@ -1,6 +1,6 @@
 %define name mandriva-clubpartner
-%define version 0.04
-%define release %mkrel 2
+%define version 0.05
+%define release %mkrel 1
 
 Summary: Mandriva Club authentication system
 Name: %{name}
@@ -9,7 +9,7 @@ Release: %{release}
 Source0: %{name}-%{version}.tar.bz2
 License: GPL
 Group: System/Servers
-Url: http://club.mandriva.com
+Url: http://svn.mandriva.com/cgi-bin/viewvc.cgi/web/clubpartner/
 BuildRoot: %{_tmppath}/%{name}-buildroot
 BuildArch: noarch
 Requires: apache-mod_authnz_external
@@ -42,6 +42,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %doc README
 %_bindir/*
+%_mandir/man?/*
 %dir %attr(0755, apache, apache) /var/cache/clubauth
 %config %_webconfdir/webapps.d/*.conf
 
