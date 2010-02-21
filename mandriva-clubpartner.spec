@@ -1,6 +1,6 @@
 %define name mandriva-clubpartner
 %define version 0.05
-%define release %mkrel 1
+%define release %mkrel 2
 
 Summary: Mandriva Club authentication system
 Name: %{name}
@@ -10,9 +10,13 @@ Source0: %{name}-%{version}.tar.bz2
 License: GPL
 Group: System/Servers
 Url: http://svn.mandriva.com/cgi-bin/viewvc.cgi/web/clubpartner/
-BuildRoot: %{_tmppath}/%{name}-buildroot
-BuildArch: noarch
 Requires: apache-mod_authnz_external
+%if %mdkversion < 201010
+Requires(post):   rpm-helper
+Requires(postun):   rpm-helper
+%endif
+BuildArch: noarch
+BuildRoot: %{_tmppath}/%{name}-%{version}
 
 %description
 This package contains script and config files to perform a direct
@@ -36,7 +40,17 @@ mkdir -p %buildroot/%_webconfdir/webapps.d
 cp httpd/*.conf %buildroot/%_webconfdir/webapps.d/
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
+
+%post
+%if %mdkversion < 201010
+%_post_webapp
+%endif
+
+%postun
+%if %mdkversion < 201010
+%_postun_webapp
+%endif
 
 %files
 %defattr(-,root,root)
@@ -44,13 +58,4 @@ rm -rf $RPM_BUILD_ROOT
 %_bindir/*
 %_mandir/man?/*
 %dir %attr(0755, apache, apache) /var/cache/clubauth
-%config %_webconfdir/webapps.d/*.conf
-
-%post
-%_post_webapp
-
-%postun
-%_postun_webapp
-
-
-
+%config(noreplace) %_webconfdir/webapps.d/*.conf
