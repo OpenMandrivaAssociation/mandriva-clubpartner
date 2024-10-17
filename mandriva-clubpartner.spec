@@ -9,7 +9,7 @@ Release: %{release}
 Source0: %{name}-%{version}.tar.bz2
 License: GPL
 Group: System/Servers
-Url: http://svn.mandriva.com/cgi-bin/viewvc.cgi/web/clubpartner/
+Url: https://svn.mandriva.com/cgi-bin/viewvc.cgi/web/clubpartner/
 Requires: apache-mod_authnz_external
 %if %mdkversion < 201010
 Requires(post):   rpm-helper
