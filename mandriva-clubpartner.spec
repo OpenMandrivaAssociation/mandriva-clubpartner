@@ -18,6 +18,7 @@ Requires(postun):   rpm-helper
 BuildArch: noarch
 BuildRoot: %{_tmppath}/%{name}-%{version}
 
+BuildRequires:	make
 %description
 This package contains script and config files to perform a direct
 mandriva club member authentication 
